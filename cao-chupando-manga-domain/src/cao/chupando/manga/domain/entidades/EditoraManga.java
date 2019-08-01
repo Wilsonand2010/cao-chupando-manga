@@ -5,15 +5,19 @@
  */
 package cao.chupando.manga.domain.entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author will
  */
-public class Volume {
+public class EditoraManga {
+    
     
     private int id;
-    private String resumo;
-    private int numero;
+    private Date dataInicio;
+    private Date dataFim;
+    private Editora editora;
     private Manga manga;
 
     public int getId() {
@@ -24,20 +28,28 @@ public class Volume {
         this.id = id;
     }
 
-    public String getResumo() {
-        return resumo;
+    public Date getDataInicio() {
+        return dataInicio;
     }
 
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public int getNumero() {
-        return numero;
+    public Date getDataFim() {
+        return dataFim;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Editora getEditora() {
+        return editora;
+    }
+
+    public void setEditora(Editora editora) {
+        this.editora = editora;
     }
 
     public Manga getManga() {
