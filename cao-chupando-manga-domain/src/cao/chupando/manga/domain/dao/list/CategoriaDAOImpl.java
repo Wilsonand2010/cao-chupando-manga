@@ -12,7 +12,7 @@ public class CategoriaDAOImpl implements ICategoriaDAO{
     
     
     private static List<Categoria> categorias = new ArrayList<>();
-    private int lastId = 1;
+    private static int lastId = 1;
 
     public void inserir(Categoria ent) {
         if(ent == null){
