@@ -6,13 +6,47 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>CAO CHUPANDO MANGÁ</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+  
     </head>
     <body>
-        <div>TODO write content</div>
+        <div></div>
+        
+        <table>
+            <thead>
+              
+                <th>Id</th>
+                <th>Nome</th>
+                
+            </thead>
+            <tbody id = "dados">
+                
+            </tbody>
+        </table>
         
     </body>
+    
+    <script>
+        $(document).ready(function(){
+            $.get("http://localhost:8080/cao-chupando-manga-webapi/api/categoria/", 
+            function(data){
+                for(var i=0; i<data.length;i++){
+                    var c = data[i];
+                    var dados = $("#dados");
+                    dados.append("<tr><td>"+c.id+"</td><td>"+c.nome+"</td></tr>");
+                    
+                    
+                }
+            });
+        });
+    </script>
+    
 </html>

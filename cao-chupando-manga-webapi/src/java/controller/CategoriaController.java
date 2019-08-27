@@ -3,7 +3,9 @@ package controller;
 
 import cao.chupando.manga.domain.dao.ICategoriaDAO;
 import cao.chupando.manga.domain.dao.list.CategoriaDAOImpl;
+import cao.chupando.manga.domain.dao.postgresql.CategoriaDAOImplPostegreSQL;
 import cao.chupando.manga.domain.entidades.Categoria;
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,14 +16,14 @@ import javax.ws.rs.core.MediaType;
 @Path("/categoria")
 public class CategoriaController {
 
-    private ICategoriaDAO banco = new CategoriaDAOImpl();
+    private final ICategoriaDAO banco = new CategoriaDAOImplPostegreSQL();
     
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     
-    public String index(){
-        return "\"teste\"";
+    public List<Categoria> index(){
+        return banco.consultar();
     }
     
     @GET
@@ -47,5 +49,20 @@ public class CategoriaController {
         String ret = "{\"status\":1}";
         return ret;
     }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/remover/{id}")
+    public Categoria remove(@PathParam("id") int pk){
+        for(Categoria cat : banco.consultar()){
+            if(cat.getId() == pk )
+            {
+                banco.remover(cat.getId());
+                return cat;
+            }
+        }
+       return null;
+    }
+    
 }
 
