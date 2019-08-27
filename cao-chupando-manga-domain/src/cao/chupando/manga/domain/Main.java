@@ -3,6 +3,7 @@ package cao.chupando.manga.domain;
 
 import cao.chupando.manga.domain.dao.ICategoriaDAO;
 import cao.chupando.manga.domain.dao.list.CategoriaDAOImpl;
+import cao.chupando.manga.domain.dao.postgresql.CategoriaDAOImplPostegreSQL;
 import cao.chupando.manga.domain.entidades.Categoria;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        ICategoriaDAO banco = new CategoriaDAOImpl();
+        ICategoriaDAO banco = new CategoriaDAOImplPostegreSQL();
         Scanner t = new Scanner(System.in);
         int opcao = 0;
         
@@ -46,7 +47,7 @@ public class Main {
                     System.out.println("Digite o ID => ");
                     Categoria c = new Categoria();
                     c.setId(t.nextInt());
-                    System.out.println("Digite o novo atualizado => ");
+                    System.out.println("Digite o novo nome atualizado => ");
                     c.setNome(t.next());
                     banco.atualizar(c);
                     System.out.println("Atualzado com Sucesso!");
